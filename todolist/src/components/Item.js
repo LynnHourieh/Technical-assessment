@@ -3,10 +3,19 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 
-function Item({ todo,setTodo }) {
+function Item({ todo, setTodo }) {
   const deleteTask = (id) => {
-    let newTask = todo.filter(task => task.id != id);
-    setTodo(newTask)
+    let newTask = todo.filter((task) => task.id != id);
+    setTodo(newTask);
+  };
+  const TaskCheck = (id) => {
+    let newTask = todo.map((task) => {
+      if (task.id == id) {
+        return { ...task, isCompleted: !task.isCompleted };
+      }
+      return task;
+    });
+    setTodo(newTask);
   };
 
   return (
@@ -36,7 +45,11 @@ function Item({ todo,setTodo }) {
                   <div className="icons">
                     <AiFillEdit />
                     <AiFillDelete onClick={() => deleteTask(unit.id)} />{" "}
-                    <input type="checkbox" className="checkbox_style" />
+                    <input
+                      type="checkbox"
+                      className="checkbox_style"
+                      onClick={() => TaskCheck(unit.id)}
+                    />
                   </div>
                 </Card.Body>
               </Card>
