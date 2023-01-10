@@ -18,14 +18,14 @@ function AddItem({ todo, setTodo }) {
         isCompleted: false,
         image: newimage,
       };
-      setTodo([...todo,newItem])
-      setNewTask("")
+      setTodo([...todo, newItem]);
+      setNewTask("");
     }
   };
-  const onImage =(e)=>{
+  const onImage = (e) => {
     // console.log(e.target.files[0].name)
-    setNewImage(e.target.files[0].name);
-  }
+    setNewImage(e.target.files[0]);
+  };
   return (
     <>
       <Button variant="primary" className="add_item" onClick={handleShow}>
