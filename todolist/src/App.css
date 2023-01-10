@@ -47,6 +47,7 @@ h2{color:#2e489e}
   display: flex;
   justify-content: space-evenly;
   color: #2e489e;
+  cursor: pointer;
 }
 
 .add_item {
