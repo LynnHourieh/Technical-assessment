@@ -2,13 +2,10 @@ import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
+
 
 function Item({ todo, setTodo }) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+console.log(todo)
   const deleteTask = (id) => {
     let newTask = todo.filter((task) => task.id != id);
     setTodo(newTask);
@@ -30,7 +27,7 @@ function Item({ todo, setTodo }) {
           {todo?.map((unit) => {
             return (
               <Card
-                style={{ width: "18rem", borderColor: "#f54b9d",margin:"5px" }}
+                style={{ width: "18rem", borderColor: "#f54b9d",margin:"1%" }}
                 key={unit.id}
               >
                 <Card.Img
@@ -48,7 +45,7 @@ function Item({ todo, setTodo }) {
                     )}
                   </Card.Text>
                   <div className="icons">
-                    <AiFillEdit onClick={handleShow}/>
+                  
                     <AiFillDelete onClick={() => deleteTask(unit.id)} />{" "}
                     <input
                       type="checkbox"
@@ -74,42 +71,7 @@ function Item({ todo, setTodo }) {
           Click Add item button to add new task
         </h2>
       )}
-       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Adding New Item</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {" "}
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>add your item</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="write here"
-                
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Upload image</Form.Label>
-              <Form.Control
-                className="header_form"
-                type="file"
-                placeholder="status"
-                autoFocus
-                
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Submit
-          </Button>
-        </Modal.Footer>
-      </Modal>
+       
     </div>
   );
 }
