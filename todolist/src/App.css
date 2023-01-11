@@ -40,7 +40,9 @@
 h1 {
   text-align: center;
 }
-h2{color:#2e489e}
+h2 {
+  color: #2e489e;
+}
 
 /* For Item.js file */
 .icons {
@@ -50,18 +52,23 @@ h2{color:#2e489e}
   cursor: pointer;
 }
 
-.add_item {
+.additem {
   float: right;
+ 
 }
 .card_style {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 80px;
-
-
 }
 
 .cards_images {
   height: 65%;
+}
+.load_more{
+
+  margin-left: 50%;
+ 
+  
 }

@@ -27,7 +27,7 @@ function AddItem({ todo, setTodo }) {
   };
   return (
     <>
-      <Button variant="primary" className="add_item" onClick={handleShow}>
+      <Button variant="primary" className="additem" onClick={handleShow}>
         Add Item
       </Button>
 
