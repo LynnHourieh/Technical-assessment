@@ -1,7 +1,11 @@
 import React,{useState,useEffect} from "react";
 import "./Login.css";
-function Login() {
+import { useContext } from "react";
+import LoginContext from "../Context/LoginContext"
 
+function Login() {
+const{login}=useContext(LoginContext)
+console.log(login)
   return (
     <div class="login-page">
       <div class="form">
