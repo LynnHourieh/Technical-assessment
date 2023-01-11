@@ -20,7 +20,7 @@ function Login() {
         `https://63be913af5cfc0949b5ae393.mockapi.io/api/login?email=${email}&password=${password}`
       )
       .then((response) => {
-        console.log(response.data[0].email)
+        // console.log(response.data[0].email)
         if (
           response.data[0].email == email &&
           response.data[0].password == password

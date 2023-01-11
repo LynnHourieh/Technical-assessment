@@ -1,11 +1,10 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
 function Item({ todo, setTodo }) {
-
   //for load more Tasks
   //inital number of elements we want to show is 10
   const [nElement, setnElement] = useState(10);
@@ -17,7 +16,7 @@ function Item({ todo, setTodo }) {
     setnElement(todo.length);
   };
   // console.log(todo)
-  
+
   //deleteTask function returns all the tasks excluding the id that we passed as a parameter
   const deleteTask = (id) => {
     let newTask = todo.filter((task) => task.id != id);
@@ -25,10 +24,10 @@ function Item({ todo, setTodo }) {
   };
 
   //TaskCheck function maps through todo data with an condition(to avoid errors) .
-  //if the id of the task matches the id that we passed through the parameter 
+  //if the id of the task matches the id that we passed through the parameter
   //then return all the data with task status (isCompleted) opposite to the current data that we have because it is a boolean .
   //if id is not matching then, return all the tasks
-  //set the variable todo with the updated values 
+  //set the variable todo with the updated values
   const TaskCheck = (id) => {
     let newTask = todo.map((task) => {
       if (task.id == id) {
@@ -38,12 +37,16 @@ function Item({ todo, setTodo }) {
     });
     setTodo(newTask);
   };
+
+  //checking the token
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   // console.log(token)
 
   useEffect(() => {
-    if(!token){navigate("/")};
+    if (!token) {
+      navigate("/");
+    }
   }, []);
   return (
     <>
@@ -51,7 +54,7 @@ function Item({ todo, setTodo }) {
         {/* turnanry operator to return data if slice.length>0 otherwise return NO TASKS YET */}
         {slice.length ? (
           <>
-          {/* do mapping for the slice data to show the image, task, status*/}
+            {/* do mapping for the slice data to show the image, task, status*/}
             {slice?.map((unit) => {
               return (
                 // Each map have unique key id
