@@ -11,7 +11,8 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const navigate = useNavigate();
-
+//onSubmit function to check if email and password correct from API and then navigate to tasks 
+//using axios to fetch data and to track response process
   const onSubmit = (e) => {
     e.preventDefault();
     axios
@@ -24,6 +25,8 @@ function Login() {
           response.data[0].email == email &&
           response.data[0].password == password
         ) {
+         
+          localStorage.setItem("token", response.data[0].token);
           navigate("/tasks");
         } else {
           return alert("incorrect email or password")

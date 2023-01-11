@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 function Item({ todo, setTodo }) {
+
   //for load more Tasks
   //inital number of elements we want to show is 10
   const [nElement, setnElement] = useState(10);
@@ -36,7 +38,13 @@ function Item({ todo, setTodo }) {
     });
     setTodo(newTask);
   };
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  // console.log(token)
 
+  useEffect(() => {
+    if(!token){navigate("/")};
+  }, []);
   return (
     <>
       <div className="card_style">
