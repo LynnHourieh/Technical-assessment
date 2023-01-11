@@ -21,7 +21,7 @@ function App() {
     { id: 8, task: "sleep", isCompleted: false, image: "download.jpg" },
     { id: 9, task: "sleep", isCompleted: false, image: "download.jpg" },
     { id: 10, task: "sleep", isCompleted: false, image: "download.jpg" },
-    { id: 11, task: "sleep", isCompleted: false, image: "download.jpg" },
+    { id: 11, task: "bed", isCompleted: false, image: "download.jpg" },
   ]);
   const [item, setItem] = useState(todo);
   const filterItem = (curcat) => {

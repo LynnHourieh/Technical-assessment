@@ -23,7 +23,6 @@ function AddItem({ todo, setTodo }) {
     }
   };
   const onImage = (e) => {
-    // console.log(e.target.files[0].name)
     setNewImage(e.target.files[0]);
   };
   return (

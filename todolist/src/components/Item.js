@@ -5,6 +5,14 @@ import Button from "react-bootstrap/Button";
 
 
 function Item({ todo, setTodo }) {
+
+const[nElement,setnElement]=useState(10);
+const slice =todo.slice(0,nElement);
+const LoadMore=()=>{
+  console.log(todo.length)
+  setnElement(todo.length)
+}
+
 console.log(todo)
   const deleteTask = (id) => {
     let newTask = todo.filter((task) => task.id != id);
@@ -21,10 +29,11 @@ console.log(todo)
   };
 
   return (
+    <>
     <div className="card_style">
-      {todo.length ? (
+      {slice.length ? (
         <>
-          {todo?.map((unit) => {
+          {slice?.map((unit) => {
             return (
               <Card
                 style={{ width: "18rem", borderColor: "#f54b9d",margin:"1%" }}
@@ -57,6 +66,7 @@ console.log(todo)
               </Card>
             );
           })}
+
         </>
       ) : (
         <h2>
@@ -71,8 +81,10 @@ console.log(todo)
           Click Add item button to add new task
         </h2>
       )}
-       
+      
     </div>
+    <Button onClick={LoadMore}>Load more</Button>
+    </>
   );
 }
 
