@@ -17,3 +17,48 @@ function App() {
 }
 
 export default App;
+
+
+// const onSubmit = (e) => {
+//   e.preventDefault();
+
+//   axios
+//     .post(
+//       `https://63be913af5cfc0949b5ae393.mockapi.io/api/login?email=${email}&password=${password}`,
+//       {
+//         method: "POST",
+//         headers: { "Content-Type": "multipart/form-data" },
+//       }
+//     )
+//     .then((res) => {
+//       console.log(res.data.email)
+//       if (res.email == email && res.password == password) {
+//         return alert("correct");
+//       } else {
+//         return alert("incorrect");
+//       }
+//     });
+// };
+
+
+// const onSubmit = (e) => {
+//   e.preventDefault();
+//   fetch(
+//     `https://63be913af5cfc0949b5ae393.mockapi.io/api/login?email=${email}&password=${password}`,
+//     {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     }
+//   )
+//     .then((response) => {
+//       if (response.ok) {
+//         console.log(response.data);
+//         if(response.email==email && response.password==password){
+//           return alert("correct")
+//         }
+//         else{return alert("incorrect")}
+//       }
+//       // throw response;
+//     })
