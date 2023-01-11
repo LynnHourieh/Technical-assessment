@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+
 function AddItem({ todo, setTodo }) {
   const [newTask, setNewTask] = useState("");
   const [newimage, setNewImage] = useState("");
   const [show, setShow] = useState(false);
-
+  // let mv=require("mv")
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const AddTask = () => {
@@ -24,6 +25,8 @@ function AddItem({ todo, setTodo }) {
   };
   const onImage = (e) => {
     setNewImage(e.target.files[0]);
+   
+    // newimage.mv(`${__dirname}/todolist/src/images/${newimage.name}`)
   };
   return (
     <>

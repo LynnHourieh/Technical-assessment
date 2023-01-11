@@ -72,7 +72,7 @@ function Pages() {
         <Nav.Item></Nav.Item>
       </Nav>
       {/* Additem component to add new task with props item   */}
-      <AddItem item={todo} setTodo={setTodo} />
+      <AddItem todo={todo} setTodo={setTodo} />
       {/* Item component to shoe the tasks with props item (the filtered data) and setItem from React hooks */}
       <Item todo={item} setTodo={setItem} />
     </>

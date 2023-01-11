@@ -1,0 +1,4 @@
+Fake API:
+
+https://63be913af5cfc0949b5ae393.mockapi.io/api/login
+[{"email":"Demetris.Kuhlman@yahoo.com","password":"VCGAbMYDk9qfxaj","id":"1"},{"email":"Shemar_Maggio84@hotmail.com","password":"HFnzWBcRLPnJlEI","id":"2"},{"email":"Salvador9@yahoo.com","password":"OAaTU722cfwG8c3","id":"3"}]
