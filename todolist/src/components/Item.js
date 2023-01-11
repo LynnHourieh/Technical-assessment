@@ -56,11 +56,17 @@ console.log(todo)
                   <div className="icons">
                   
                     <AiFillDelete onClick={() => deleteTask(unit.id)} />{" "}
-                    <input
+                    {unit.isCompleted==true ?( <input
                       type="checkbox"
                       className="checkbox_style"
                       onClick={() => TaskCheck(unit.id)}
-                    />
+                      checked
+                    />):( <input
+                      type="checkbox"
+                      className="checkbox_style"
+                      onClick={() => TaskCheck(unit.id)}
+                    />)}
+                   
                   </div>
                 </Card.Body>
               </Card>

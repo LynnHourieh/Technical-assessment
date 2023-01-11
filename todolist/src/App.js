@@ -14,7 +14,7 @@ function App() {
     {
       id: 6,
       task: "sleephjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
-      isCompleted: false,
+      isCompleted: true,
       image: "download.jpg",
     },
     { id: 7, task: "sleep", isCompleted: false, image: "download.jpg" },
