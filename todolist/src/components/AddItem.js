@@ -27,13 +27,26 @@ function AddItem({ todo, setTodo }) {
   };
   return (
     <>
+      {/* clicking on the button will open a popup or modal that enable us to add new task */}
       <Button variant="primary" className="additem" onClick={handleShow}>
         Add Item
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Adding New Item</Modal.Title>
+        <Modal.Header closeButton style={{borderColor:"#fbb107"}}>
+          <Modal.Title>
+            {" "}
+            <font color="#f54b9d">A</font>
+            <font color="#fbb107">D</font>
+            <font color="#2e489e">D </font>
+            <font color="#f54b9d">N</font>
+            <font color="#fbb107">E</font>
+            <font color="#2e489e">W </font>
+            <font color="#f54b9d"> T</font>
+            <font color="#fbb107">A</font>
+            <font color="#2e489e">S</font>
+            <font color="#f54b9d">K</font>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {" "}
@@ -41,6 +54,7 @@ function AddItem({ todo, setTodo }) {
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>add your item</Form.Label>
               <Form.Control
+              style={{borderColor:"#fbb107"}}
                 type="text"
                 placeholder="write here"
                 value={newTask}
@@ -56,12 +70,13 @@ function AddItem({ todo, setTodo }) {
                 type="file"
                 placeholder="status"
                 autoFocus
+                style={{borderColor:"#fbb107"}}
                 onChange={onImage}
               />
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{borderColor:"#fbb107"}}>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
