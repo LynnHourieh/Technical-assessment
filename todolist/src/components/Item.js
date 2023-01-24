@@ -122,9 +122,9 @@ function Item({ todo, setTodo }) {
           </h2>
         )}
       </div>
-      <Button variant="primary" className="load_more" onClick={LoadMore}>
+     {nElement <10 ? (<Button variant="primary" className="load_more" onClick={LoadMore}>
         Load more
-      </Button>
+      </Button>):(" ")} 
     </>
   );
 }
