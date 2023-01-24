@@ -7,10 +7,11 @@ function AddItem({ todo, setTodo }) {
   const [newTask, setNewTask] = useState("");
   const [newimage, setNewImage] = useState("");
   const [show, setShow] = useState(false);
-  // let mv=require("mv")
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const AddTask = () => {
+  const AddTask = (e) => {
+    e.preventDefault();
     if (newTask) {
       let number = todo.length + 1;
       let newItem = {
@@ -23,11 +24,14 @@ function AddItem({ todo, setTodo }) {
       setNewTask("");
     }
   };
-  const onImage = (e) => {
-    setNewImage(e.target.files[0]);
-   
-    // newimage.mv(`${__dirname}/todolist/src/images/${newimage.name}`)
-  };
+  const handleChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setNewImage(reader.result);
+    }
+    reader.readAsDataURL(file);
+  }
   return (
     <>
       {/* clicking on the button will open a popup or modal that enable us to add new task */}
@@ -74,7 +78,7 @@ function AddItem({ todo, setTodo }) {
                 placeholder="status"
                 autoFocus
                 style={{borderColor:"#fbb107"}}
-                onChange={onImage}
+                onChange={handleChange}
               />
             </Form.Group>
           </Form>

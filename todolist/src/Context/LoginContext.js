@@ -1,24 +1,33 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext } from "react";
+import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
 const LoginContext = createContext();
+
 export const LoginProvider = ({ children }) => {
-  const [login, setLogin] = useState([]);
-  const[isLoading,setisLoading]=useState(true)
-  //FetchUser is a function that fetches the data from th MOCK API 
-  const FetchUser = async () => {
-    const response = await fetch(
-      `https://63be913af5cfc0949b5ae393.mockapi.io/api/login`
-    );
-    const data = await response.json();
-    setisLoading(false)
-    // console.log(data);
-    setLogin(data)
+  const navigate = useNavigate();
+  const onSubmit = (email, password) => {
+    axios
+      .get(
+        `https://63be913af5cfc0949b5ae393.mockapi.io/api/login?email=${email}&password=${password}`
+      )
+      .then((response) => {
+        // console.log(response.data[0].email)
+        if (
+          response.data[0].email == email &&
+          response.data[0].password == password
+        ) {
+          localStorage.setItem("token", response.data[0].token);
+          navigate("/tasks");
+        } else {
+          return alert("incorrect email or password");
+        }
+      });
   };
-  //as we refresh the page, the data should fe fetched again
-  useEffect(() => {
-    FetchUser();
-  }, []);
-if (isLoading) return "loading.."
-  return <LoginContext.Provider value={{login}}>{children}</LoginContext.Provider>;
+  return (
+    <LoginContext.Provider value={{ onSubmit }}>
+      {children}
+    </LoginContext.Provider>
+  );
 };
-export default LoginContext
+export default LoginContext;

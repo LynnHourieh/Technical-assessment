@@ -10,6 +10,7 @@ function Item({ todo, setTodo }) {
   const [nElement, setnElement] = useState(10);
   //slice variable is an array that contain fist 10 tasks that we have
   const slice = todo.slice(0, nElement);
+  //console.log(slice)
   //LoadMore function returns all the tasks that we have by setting mElement variable to the length of inital array(todo)
   const LoadMore = () => {
     // console.log(todo.length)
@@ -31,10 +32,12 @@ function Item({ todo, setTodo }) {
   const TaskCheck = (id) => {
     let newTask = todo.map((task) => {
       if (task.id == id) {
+        
         return { ...task, isCompleted: !task.isCompleted };
       }
       return task;
     });
+    // console.log(newTask)
     setTodo(newTask);
   };
 

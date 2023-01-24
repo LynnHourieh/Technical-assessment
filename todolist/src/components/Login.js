@@ -1,39 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Login.css";
 import { useContext } from "react";
 import LoginContext from "../Context/LoginContext";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
 
 function Login() {
-  const { login } = useContext(LoginContext);
-  // console.log(login)
-  const [email, setEmail] = useState("");
-  const [password, setPass] = useState("");
-  const navigate = useNavigate();
-//onSubmit function to check if email and password correct from API and then navigate to tasks 
-//using axios to fetch data and to track response process
-  const onSubmit = (e) => {
+  const { onSubmit } = useContext(LoginContext);
+  const emailRef=useRef();
+  const passwordRef=useRef();
+
+  function handleSubmit(e){
     e.preventDefault();
-    axios
-      .get(
-        `https://63be913af5cfc0949b5ae393.mockapi.io/api/login?email=${email}&password=${password}`
-      )
-      .then((response) => {
-        // console.log(response.data[0].email)
-        if (
-          response.data[0].email == email &&
-          response.data[0].password == password
-        ) {
-         
-          localStorage.setItem("token", response.data[0].token);
-          navigate("/tasks");
-        } else {
-          return alert("incorrect email or password")
-          
-        }
-      });
-  };
+    onSubmit(emailRef.current.value,passwordRef.current.value)
+  }
+
   return (
     <div class="login-page">
       <div class="form">
@@ -55,21 +35,17 @@ function Login() {
             type="email"
             placeholder="email"
             required
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            ref={emailRef}
+         
           />
           <input
             type="password"
             placeholder="password"
             required
-            value={password}
-            onChange={(e) => {
-              setPass(e.target.value);
-            }}
+            ref={passwordRef}
+           
           />
-          <button onClick={onSubmit}>login</button>
+          <button onClick={handleSubmit}>login</button>
         </form>
       </div>
     </div>
