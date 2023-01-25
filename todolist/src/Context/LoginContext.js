@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +7,8 @@ const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
   const navigate = useNavigate();
+  const[error,setError]=useState("")
+
   const onSubmit = (email, password) => {
     axios
       .get(
@@ -18,14 +21,16 @@ export const LoginProvider = ({ children }) => {
           response.data[0].password == password
         ) {
           localStorage.setItem("token", response.data[0].token);
+        
           navigate("/tasks");
         } else {
-          return alert("incorrect email or password");
+          return setError("incorrect email or password");
         }
       });
   };
+  
   return (
-    <LoginContext.Provider value={{ onSubmit }}>
+    <LoginContext.Provider value={{ onSubmit,error }}>
       {children}
     </LoginContext.Provider>
   );

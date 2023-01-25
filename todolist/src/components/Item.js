@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,memo } from "react";
 import Card from "react-bootstrap/Card";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
 function Item({ todo, setTodo }) {
+  console.log("Items are rendering")
   //for load more Tasks
   //inital number of elements we want to show is 10
   const [nElement, setnElement] = useState(10);
@@ -129,4 +130,4 @@ function Item({ todo, setTodo }) {
   );
 }
 
-export default Item;
+export default memo(Item);

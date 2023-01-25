@@ -5,7 +5,7 @@ import LoginContext from "../Context/LoginContext";
 
 
 function Login() {
-  const { onSubmit } = useContext(LoginContext);
+  const { onSubmit,error } = useContext(LoginContext);
   const emailRef=useRef();
   const passwordRef=useRef();
 
@@ -28,6 +28,7 @@ function Login() {
               <font color="#fbb107">N</font>
             </h3>
             <p>Please enter your credentials to login.</p>
+            {error ? (<p>{error}</p>):("")}
           </div>
         </div>
         <form class="login-form">
