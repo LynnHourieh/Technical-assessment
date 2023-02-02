@@ -2,16 +2,29 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Login.css";
 import { useContext } from "react";
 import LoginContext from "../Context/LoginContext";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import {yupResolver} from "@hookform/resolvers/yup"
+const schema = yup.object().shape({
+  email: yup.string().email().required("Email is required"),
+  password: yup.string().min(8, "Password must have at least 8 characters").required("Password is required"),
+ 
+});
 
 
 function Login() {
-  const { onSubmit,error } = useContext(LoginContext);
-  const emailRef=useRef();
-  const passwordRef=useRef();
+  const { register, handleSubmit,  formState: { errors } } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const { LoginCheck,error } = useContext(LoginContext);
+  // const emailRef=useRef();
+  // const passwordRef=useRef();
 
-  function handleSubmit(e){
+  function onSubmit(data,e){
     e.preventDefault();
-    onSubmit(emailRef.current.value,passwordRef.current.value)
+
+    LoginCheck(data.email,data.password)
+    // LoginCheck(emailRef.current.value, passwordRef.current.value);
   }
 
   return (
@@ -31,22 +44,27 @@ function Login() {
             {error ? (<p>{error}</p>):("")}
           </div>
         </div>
-        <form class="login-form">
+        <form class="login-form" onSubmit={handleSubmit(onSubmit)}>
           <input
-            type="email"
+           
             placeholder="email"
             required
-            ref={emailRef}
+            // ref={emailRef}
+            {...register('email')}
+            className={errors.email ? 'error' : ''}
          
           />
+             <p className={errors.email ? 'error-message' : ''}>{errors.email?.message}</p>
           <input
             type="password"
             placeholder="password"
             required
-            ref={passwordRef}
-           
+            // ref={passwordRef}
+            {...register('password')}
+            className={errors.password ? 'error' : ''}
           />
-          <button onClick={handleSubmit}>login</button>
+           <p className={errors.password ? 'error-message' : ''}>{errors.password?.message}</p>
+          <button type="submit">login</button>
         </form>
       </div>
     </div>

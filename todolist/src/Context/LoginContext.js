@@ -9,7 +9,7 @@ export const LoginProvider = ({ children }) => {
   const navigate = useNavigate();
   const[error,setError]=useState("")
 
-  const onSubmit = (email, password) => {
+  const LoginCheck = (email, password) => {
     axios
       .get(
         `https://63be913af5cfc0949b5ae393.mockapi.io/api/login?email=${email}&password=${password}`
@@ -30,7 +30,7 @@ export const LoginProvider = ({ children }) => {
   };
   
   return (
-    <LoginContext.Provider value={{ onSubmit,error }}>
+    <LoginContext.Provider value={{ LoginCheck,error }}>
       {children}
     </LoginContext.Provider>
   );
